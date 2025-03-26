@@ -55,7 +55,7 @@ function setPiece() {
 
     let tile = this
 
-    if (board[r][c] = ' ') {
+    if (board[r][c] == ' ') {
         tile.classList.add("red-piece");
         currPlayer = playerRed;
     }
@@ -92,4 +92,22 @@ function setPiece() {
     // currColumns[c] = r; //update the array
 
     checkScore();
+}
+
+function checkScore() {
+     var score = 0 ;
+     // horizontal
+     for (let r = 0; r < rows; r++) {
+         for (let c = 0; c < columns; c++){
+            if (board[r][c] != ' ') {
+                if (board[r][c] == playerGreen) {
+                    score = score + 1;
+                }
+            }
+         }
+     }
+
+	let winner = document.getElementById("winner");
+    winner.innerText = score ;
+    
 }
