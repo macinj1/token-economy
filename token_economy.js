@@ -54,8 +54,9 @@ function setPiece() {
     */
 
     
-    let tile = this; 
-    currPlayer = board[r][c] ; // tile.getBackground() ;
+    let tile = board[r][c] ; 
+    currPlayer = tile.style.backgroundColor ; 
+    // currPlayer = board[r][c] ; // tile.getBackground() ;
 	
     if (currPlayer == playerWhite) {
         tile.classList.add("red-piece");
