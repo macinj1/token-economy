@@ -52,6 +52,9 @@ function setPiece() {
 
     board[r][c] = currPlayer; //update JS board
     let tile = document.getElementById(r.toString() + "-" + c.toString());
+    tile.classList.add("red-piece");
+
+    /*
     if (currPlayer == playerRed) {
         tile.classList.add("red-piece");
         currPlayer = playerYellow;
@@ -60,9 +63,10 @@ function setPiece() {
         tile.classList.add("yellow-piece");
         currPlayer = playerRed;
     }
+    */
 
-    r -= 1; //update the row height for that column
-    currColumns[c] = r; //update the array
+    // r -= 1; //update the row height for that column
+    // currColumns[c] = r; //update the array
 
     checkWinner();
 }
