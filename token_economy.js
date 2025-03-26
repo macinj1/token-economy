@@ -63,6 +63,7 @@ function setPiece() {
     else if {
         tile.classList.add("green-piece");
         currPlayer = playerBlack;
+    }
     else {
         tile.classList.add("black-piece");
         currPlayer = playerRed;
@@ -72,5 +73,5 @@ function setPiece() {
     // r -= 1; //update the row height for that column
     // currColumns[c] = r; //update the array
 
-    checkWinner();
+    checkScore();
 }
