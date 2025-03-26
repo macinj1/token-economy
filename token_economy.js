@@ -106,8 +106,8 @@ function checkScore() {
             }
          }
      }
-
-	let winner = document.getElementById("winner");
-    winner.innerText = score ;
-    
+	
+     let winner = document.getElementById("winner");
+     winner.innerText = score ;
+	
 }
