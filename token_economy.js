@@ -1,24 +1,20 @@
-var playerRed = "R";
-var playerGreen = "G";
-var playerWhite = "W";
-// var currPlayer = playerRed;
+// Define the two colors to toggle between
+const color1 = '#2ecc71'; // Green
+const color2 = '#e74c3c'; // Red
 
-var greenCount = 10 ;
-var gameOver = false;
+// Variables
 var board;
-
 var rows = 6;
 var columns = 7;
-var currColumns = []; //keeps track of which row each column is at.
 
+// Start code
 window.onload = function() {
     setGame();
 }
 
 function setGame() {
-    document.getElementById("green-count").innerText = greenCount ;
-    // currColumns = [5, 5, 5, 5, 5, 5, 5];
 
+    // Make tile
     board = [];
     for (let r = 0; r < rows; r++) {
         let row = [];
@@ -29,108 +25,60 @@ function setGame() {
             let tile = document.createElement("div");
             tile.id = r.toString() + "-" + c.toString();
             tile.classList.add("tile");
-            tile.addEventListener("click", setColor);
+            tile.addEventListener("click", clickTile);
             document.getElementById("board").append(tile);
         }
         board.push(row);
     }
+    
 }
 
-function setColor() {
+function clickTile() {
 
-	let tile = this ; 
-	//
-	if (tile.style.backgroundColor = "white") {
-		// tile.style.backgroundColor = "red";
-		tile.classList.add("red-piece");
-	}
-	else if (tile.style.backgroundColor = "red") {
-		// tile.style.backgroundColor = "green";
-		tile.classList.add("green-piece");
-	}
-	else if (tile.style.backgroundColor = "green") {
-		// tile.style.backgroundColor = "white";
-		tile.classList.add("white-piece");
-	}
-		
-}
+    let tile = this ; 
+    // Get the current background color
+    const currentColor = getComputedStyle(tile).backgroundColor;
 
-function setPiece() {
-    if (gameOver) {
-        return;
-    }
-
-    //get coords of that tile clicked
+    // Get coords of that tile clicked
     let coords = this.id.split("-");
     let r = parseInt(coords[0]);
     let c = parseInt(coords[1]);
 
-    // figure out which row the current column should be on
-    // r = currColumns[c]; 
+    board[r][c] = currentColor; //update JS board
 
-    /*
-    if (r < 0) { // board[r][c] != ' '
-        return;
+    // Analyze the current color and determine the next color
+    if (currentColor === color1 || currentColor === 'rgb(255, 255, 255)') {
+      // If the current color is white, change to red
+      tile.style.backgroundColor = color2;
+    } else if (currentColor === color2 || currentColor === 'rgb(231, 76, 60)') {
+      // If the current color is red, change to green
+      tile.style.backgroundColor = color1;
+    } else {
+      tile.style.backgroundColor = 'rgb(255, 255, 255)';
     }
-    */
 
-    
-    let tile = board[r][c] ; 
-    currPlayer = tile.style.backgroundColor ; 
-    // currPlayer = board[r][c] ; // tile.getBackground() ;
-	
-    if (currPlayer == playerWhite) {
-        tile.classList.add("red-piece");
-        // currPlayer = playerRed;
-    }
-    else if (currPlayer == playerRed) {
-        tile.classList.add("green-piece");
-        // currPlayer = playerGreen;
-    }
-    else {
-        tile.classList.add("white-piece");
-        // currPlayer = playerBlack;
-    }
-        
-
-    /*
-    // board[r][c] = currPlayer; //update JS board
-    currPlayer = board[r][c] ;
-    let tile = this; // document.getElementById(r.toString() + "-" + c.toString());
-    // tile.classList.add("red-piece");
-
-    if (currPlayer == playerRed) {
-        tile.classList.add("red-piece");
-        currPlayer = playerGreen;
-    }
-    else if (currPlayer == playerGreen) {
-        tile.classList.add("green-piece");
-        currPlayer = playerWhite;
-    }
-    else {
-        tile.classList.add("white-piece");
-        currPlayer = playerRed;
-    }
-    */
-
-    // r -= 1; //update the row height for that column
-    // currColumns[c] = r; //update the array
-
-    checkScore();
+    // Count the score base on the number of green tiles
+    let greenCount = countGreenTiles();
+    document.getElementById("puntaje").innerText = greenCount;
+  
 }
 
-function checkScore() {
-    var score = 0 ;
-    // horizontal
+// Function to count how many green tiles there are
+function countGreenTiles() {
+    let greenCount = 0;
+
+    // Loop through the board to count the green tiles
     for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < columns; c++){
-	    if (board[r][c] == playerGreen) {
-		    score = score + 1;
+        for (let c = 0; c < columns; c++) {
+            let tile = document.getElementById(r + "-" + c);
+            const currentColor = getComputedStyle(tile).backgroundColor;
+
+            // Check if the tile is green
+            if (currentColor === 'rgb(46, 204, 113)' || currentColor === color1) {
+                greenCount++;
             }
-         }
-     }
-	
-     let winner = document.getElementById("winner");
-     winner.innerText = score ;
-	
+        }
+    }
+
+    return greenCount;
 }
