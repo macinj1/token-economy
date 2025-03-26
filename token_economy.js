@@ -26,9 +26,43 @@ function setGame() {
             let tile = document.createElement("div");
             tile.id = r.toString() + "-" + c.toString();
             tile.classList.add("tile");
-            
+            tile.addEventListener("click", setPiece);
             document.getElementById("board").append(tile);
         }
         board.push(row);
     }
+}
+
+function setPiece() {
+    if (gameOver) {
+        return;
+    }
+
+    //get coords of that tile clicked
+    let coords = this.id.split("-");
+    let r = parseInt(coords[0]);
+    let c = parseInt(coords[1]);
+
+    // figure out which row the current column should be on
+    r = currColumns[c]; 
+
+    if (r < 0) { // board[r][c] != ' '
+        return;
+    }
+
+    board[r][c] = currPlayer; //update JS board
+    let tile = document.getElementById(r.toString() + "-" + c.toString());
+    if (currPlayer == playerRed) {
+        tile.classList.add("red-piece");
+        currPlayer = playerYellow;
+    }
+    else {
+        tile.classList.add("yellow-piece");
+        currPlayer = playerRed;
+    }
+
+    r -= 1; //update the row height for that column
+    currColumns[c] = r; //update the array
+
+    checkWinner();
 }
