@@ -3,7 +3,7 @@ var playerGreen = "G";
 var playerWhite = "W";
 // var currPlayer = playerRed;
 
-var greenCount = 0 ;
+var greenCount = 10 ;
 var gameOver = false;
 var board;
 
@@ -16,7 +16,7 @@ window.onload = function() {
 }
 
 function setGame() {
-    document.getElementById("green-count").innerText = greenCount;
+    document.getElementById("green-count").innerText = greenCount ;
     // currColumns = [5, 5, 5, 5, 5, 5, 5];
 
     board = [];
@@ -39,19 +39,20 @@ function setGame() {
 function setColor() {
 
 	let tile = this ; 
-
+	//
 	if (tile.style.backgroundColor = "white") {
-
-		tile.style.backgroundColor = "red";
+		// tile.style.backgroundColor = "red";
+		tile.classList.add("red-piece");
 	}
 	else if (tile.style.backgroundColor = "red") {
-
-		tile.style.backgroundColor = "green";
+		// tile.style.backgroundColor = "green";
+		tile.classList.add("green-piece");
 	}
-	else { // (tile.style.backgroundColor = "green") {
-
-		tile.style.backgroundColor = "white";
+	else if (tile.style.backgroundColor = "green") {
+		// tile.style.backgroundColor = "white";
+		tile.classList.add("white-piece");
 	}
+		
 }
 
 function setPiece() {
