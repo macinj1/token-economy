@@ -29,6 +29,10 @@ body {
   text-align: center;
 }
 
+.item1 {
+  grid-column: 2 / 8;
+}
+
 .tile {
     height: 70px;
     width: 70px;
