@@ -3,7 +3,7 @@ var playerGreen = "G";
 var playerWhite = "W";
 // var currPlayer = playerRed;
 
-var green-count = 0 ;
+var greenCount = 0 ;
 var gameOver = false;
 var board;
 
@@ -17,7 +17,7 @@ window.onload = function() {
 
 function setGame() {
     board = [];
-    document.getElementById("mines-count").innerText = 0;
+    document.getElementById("green-count").innerText = greenCount;
     // currColumns = [5, 5, 5, 5, 5, 5, 5];
 
     for (let r = 0; r < rows; r++) {
