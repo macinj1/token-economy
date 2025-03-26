@@ -50,6 +50,10 @@ body {
     background-color: red;
 }
 
-.yellow-piece {
-    background-color: yellow;
+.green-piece {
+    background-color: green;
+}
+
+.black-piece {
+    background-color: black;
 }
