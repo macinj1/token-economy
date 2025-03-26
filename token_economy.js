@@ -52,7 +52,24 @@ function setPiece() {
         return;
     }
     */
-    
+
+    let tile = this
+
+    if (board[r][c] = ' ') {
+        tile.classList.add("red-piece");
+        currPlayer = playerRed;
+    }
+    else if (board[r][c] == playerRed) {
+        tile.classList.add("green-piece");
+        currPlayer = playerGreen;
+    }
+    else {
+        tile.classList.add("black-piece");
+        currPlayer = playerBlack;
+    }
+        
+
+    /*
     board[r][c] = currPlayer; //update JS board
     let tile = this // document.getElementById(r.toString() + "-" + c.toString());
     // tile.classList.add("red-piece");
@@ -69,7 +86,7 @@ function setPiece() {
         tile.classList.add("black-piece");
         currPlayer = playerRed;
     }
-    
+    */
 
     // r -= 1; //update the row height for that column
     // currColumns[c] = r; //update the array
