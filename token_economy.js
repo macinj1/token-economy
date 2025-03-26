@@ -54,18 +54,20 @@ function setPiece() {
     
     board[r][c] = currPlayer; //update JS board
     let tile = this // document.getElementById(r.toString() + "-" + c.toString());
-    tile.classList.add("red-piece");
+    // tile.classList.add("red-piece");
 
-    /*
     if (currPlayer == playerRed) {
         tile.classList.add("red-piece");
-        currPlayer = playerYellow;
+        currPlayer = playerGreen;
     }
+    else if {
+        tile.classList.add("green-piece");
+        currPlayer = playerBlack;
     else {
-        tile.classList.add("yellow-piece");
+        tile.classList.add("black-piece");
         currPlayer = playerRed;
     }
-    */
+    
 
     // r -= 1; //update the row height for that column
     // currColumns[c] = r; //update the array
