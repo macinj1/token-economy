@@ -27,11 +27,21 @@ function setGame() {
             let tile = document.createElement("div");
             tile.id = r.toString() + "-" + c.toString();
             tile.classList.add("tile");
-            tile.addEventListener("click", setPiece);
+            tile.addEventListener("click", setColor);
             document.getElementById("board").append(tile);
         }
         board.push(row);
     }
+}
+
+function setColor() {
+
+	let tile = this ; 
+
+	if (tile.style.backgroundColor = "white") {
+
+		tile.style.backgroundColor = "red";
+	}
 }
 
 function setPiece() {
