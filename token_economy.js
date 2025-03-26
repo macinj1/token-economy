@@ -60,7 +60,7 @@ function setPiece() {
         tile.classList.add("red-piece");
         currPlayer = playerGreen;
     }
-    else if {
+    else if (currPlayer == playerGreen) {
         tile.classList.add("green-piece");
         currPlayer = playerBlack;
     }
