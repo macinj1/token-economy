@@ -14,11 +14,19 @@ body {
     flex-wrap: wrap;
 }
 
-container {
+.container {
   display: grid;
   grid-template-columns: auto auto auto;
   background-color: dodgerblue;
   padding: 10px;
+}
+
+.container > div {
+  background-color: #f1f1f1;
+  border: 1px solid black;
+  padding: 10px;
+  font-size: 30px;
+  text-align: center;
 }
 
 .tile {
