@@ -3,6 +3,7 @@ var playerGreen = "G";
 var playerWhite = "W";
 // var currPlayer = playerRed;
 
+var green-count = 0 ;
 var gameOver = false;
 var board;
 
