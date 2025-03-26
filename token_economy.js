@@ -16,10 +16,10 @@ window.onload = function() {
 }
 
 function setGame() {
-    board = [];
-    // document.getElementById("green-count").innerText = greenCount;
+    document.getElementById("green-count").innerText = greenCount;
     // currColumns = [5, 5, 5, 5, 5, 5, 5];
 
+    board = [];
     for (let r = 0; r < rows; r++) {
         let row = [];
         for (let c = 0; c < columns; c++) {
