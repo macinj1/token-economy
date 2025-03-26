@@ -48,7 +48,7 @@ function setColor() {
 
 		tile.style.backgroundColor = "green";
 	}
-	else if (tile.style.backgroundColor = "green") {
+	else { // (tile.style.backgroundColor = "green") {
 
 		tile.style.backgroundColor = "white";
 	}
