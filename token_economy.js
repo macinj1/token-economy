@@ -70,7 +70,8 @@ function setPiece() {
     }
     */    
 
-    board[r][c] = currPlayer; //update JS board
+    // board[r][c] = currPlayer; //update JS board
+    currPlayer = board[r][c] ;
     let tile = this; // document.getElementById(r.toString() + "-" + c.toString());
     // tile.classList.add("red-piece");
 
