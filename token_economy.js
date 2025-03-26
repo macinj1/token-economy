@@ -44,7 +44,7 @@ function setPiece() {
     let c = parseInt(coords[1]);
 
     // figure out which row the current column should be on
-    r = currColumns[c]; 
+    // r = currColumns[c]; 
 
     if (r < 0) { // board[r][c] != ' '
         return;
