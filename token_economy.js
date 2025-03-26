@@ -16,6 +16,7 @@ window.onload = function() {
 
 function setGame() {
     board = [];
+    document.getElementById("mines-count").innerText = 0;
     // currColumns = [5, 5, 5, 5, 5, 5, 5];
 
     for (let r = 0; r < rows; r++) {
@@ -41,6 +42,14 @@ function setColor() {
 	if (tile.style.backgroundColor = "white") {
 
 		tile.style.backgroundColor = "red";
+	}
+	else if (tile.style.backgroundColor = "red") {
+
+		tile.style.backgroundColor = "green";
+	}
+	else if (tile.style.backgroundColor = "green") {
+
+		tile.style.backgroundColor = "white";
 	}
 }
 
