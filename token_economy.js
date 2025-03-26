@@ -46,10 +46,12 @@ function setPiece() {
     // figure out which row the current column should be on
     // r = currColumns[c]; 
 
+    /*
     if (r < 0) { // board[r][c] != ' '
         return;
     }
-
+    */
+    
     board[r][c] = currPlayer; //update JS board
     let tile = document.getElementById(r.toString() + "-" + c.toString());
     tile.classList.add("red-piece");
