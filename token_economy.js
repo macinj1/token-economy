@@ -1,6 +1,6 @@
 var playerRed = "R";
 var playerGreen = "G";
-var playerBlack = "K";
+var playerBlack = "W";
 var currPlayer = playerRed;
 
 var gameOver = false;
@@ -53,13 +53,14 @@ function setPiece() {
     }
     */
 
+    /*
     let tile = this
 
     if (board[r][c] == ' ') {
         tile.classList.add("red-piece");
         currPlayer = playerRed;
     }
-    else if (board[r][c] == playerRed) {
+    else if (board[r][c] == "red-piece" ) {
         tile.classList.add("green-piece");
         currPlayer = playerGreen;
     }
@@ -67,11 +68,10 @@ function setPiece() {
         tile.classList.add("black-piece");
         currPlayer = playerBlack;
     }
-        
+    */    
 
-    /*
     board[r][c] = currPlayer; //update JS board
-    let tile = this // document.getElementById(r.toString() + "-" + c.toString());
+    let tile = this; // document.getElementById(r.toString() + "-" + c.toString());
     // tile.classList.add("red-piece");
 
     if (currPlayer == playerRed) {
@@ -80,13 +80,13 @@ function setPiece() {
     }
     else if (currPlayer == playerGreen) {
         tile.classList.add("green-piece");
-        currPlayer = playerBlack;
+        currPlayer = playerWhite;
     }
     else {
-        tile.classList.add("black-piece");
+        tile.classList.add("white-piece");
         currPlayer = playerRed;
     }
-    */
+    
 
     // r -= 1; //update the row height for that column
     // currColumns[c] = r; //update the array
@@ -95,14 +95,12 @@ function setPiece() {
 }
 
 function checkScore() {
-     var score = 0 ;
-     // horizontal
-     for (let r = 0; r < rows; r++) {
-         for (let c = 0; c < columns; c++){
-            if (board[r][c] != ' ') {
-                if (board[r][c] == playerGreen) {
-                    score = score + 1;
-                }
+    var score = 0 ;
+    // horizontal
+    for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < columns; c++){
+	    if (board[r][c] == playerGreen) {
+		    score = score + 1;
             }
          }
      }
