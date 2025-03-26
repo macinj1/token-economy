@@ -53,7 +53,7 @@ function setPiece() {
     */
     
     board[r][c] = currPlayer; //update JS board
-    let tile = document.getElementById(r.toString() + "-" + c.toString());
+    let tile = this // document.getElementById(r.toString() + "-" + c.toString());
     tile.classList.add("red-piece");
 
     /*
