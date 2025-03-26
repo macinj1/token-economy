@@ -1,5 +1,6 @@
 var playerRed = "R";
-var playerYellow = "Y";
+var playerGreen = "G";
+var playerBlack = "K";
 var currPlayer = playerRed;
 
 var gameOver = false;
