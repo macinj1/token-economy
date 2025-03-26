@@ -1,7 +1,7 @@
 var playerRed = "R";
 var playerGreen = "G";
-var playerBlack = "W";
-var currPlayer = playerRed;
+var playerWhite = "W";
+// var currPlayer = playerRed;
 
 var gameOver = false;
 var board;
@@ -53,23 +53,25 @@ function setPiece() {
     }
     */
 
-    /*
-    let tile = this
-
-    if (board[r][c] == ' ') {
+    
+    let tile = this; 
+    currPlayer = tile.getBackground() ;
+	
+    if (currPlayer == playerWhite) {
         tile.classList.add("red-piece");
-        currPlayer = playerRed;
+        // currPlayer = playerRed;
     }
-    else if (board[r][c] == "red-piece" ) {
+    else if (currPlayer == playerRed) {
         tile.classList.add("green-piece");
-        currPlayer = playerGreen;
+        // currPlayer = playerGreen;
     }
     else {
-        tile.classList.add("black-piece");
-        currPlayer = playerBlack;
+        tile.classList.add("white-piece");
+        // currPlayer = playerBlack;
     }
-    */    
+        
 
+    /*
     // board[r][c] = currPlayer; //update JS board
     currPlayer = board[r][c] ;
     let tile = this; // document.getElementById(r.toString() + "-" + c.toString());
@@ -87,7 +89,7 @@ function setPiece() {
         tile.classList.add("white-piece");
         currPlayer = playerRed;
     }
-    
+    */
 
     // r -= 1; //update the row height for that column
     // currColumns[c] = r; //update the array
