@@ -55,3 +55,14 @@ button {
 button:hover {
     background: #2980b9;
 }
+
+#bottomRight {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+}
