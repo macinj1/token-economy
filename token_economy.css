@@ -3,45 +3,55 @@ body {
     text-align: center;
 }
 
-#board {
-    height: 540px;
-    width: 630px;
-    background-color: blue;
-    border: 10px solid navy;
-    
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
+/* Main grid */
+.grid {
+    display: grid;
+    grid-template-columns: 150px repeat(7, 80px); /* 1st column = activities */
+    gap: 5px;
+    width: fit-content;
+    margin: 20px auto;
 }
 
-.container {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  background-color: dodgerblue;
-  padding: 10px;
+/* Header cells */
+.header {
+    background: dodgerblue;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 6px;
 }
 
-.container > div {
-  background-color: #f1f1f1;
-  border: 1px solid black;
-  padding: 2px;
-  font-size: 20px;
-  text-align: center;
+/* Activity name input */
+.activity-input {
+    width: 140px;
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+    font-size: 16px;
 }
 
-.item1 {
-  grid-column: 2 / span 7 ;
-  grid-row: 2 / span 6 ;
-
-}
-
+/* Tiles */
 .tile {
-    height: 70px;
     width: 70px;
-    margin: 5px;
+    height: 70px;
+    background: white;
+    border: 3px solid #444;
+    border-radius: 12%;
+    cursor: pointer;
+    transition: background 0.2s;
+}
 
-    /* Circle */
-    background-color: white;
-    border-radius: 10%;
-    border: 5px solid navy;
+button {
+    margin: 10px;
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    background: #3498db;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2980b9;
 }
