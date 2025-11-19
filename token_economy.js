@@ -1,84 +1,96 @@
-// Define the two colors to toggle between
-const color1 = '#2ecc71'; // Green
-const color2 = '#e74c3c'; // Red
+// Colors
+const WHITE = "white";
+const GREEN = "#2ecc71";
+const RED   = "#e74c3c";
 
-// Variables
-var board;
-var rows = 6;
-var columns = 7;
+const RGB_WHITE = "rgb(255, 255, 255)";
+const RGB_RED   = "rgb(231, 76, 60)";
+const RGB_GREEN = "rgb(46, 204, 113)";
 
-// Start code
-window.onload = function() {
-    setGame();
+const DAYS = ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"];
+
+let activityCount = 0; // dynamic
+
+window.onload = () => {
+    buildHeader();
+    addActivityRow(); // start with 1 row if you want
+    document.getElementById("addActivityBtn").addEventListener("click", addActivityRow);
+    updateScore();
+};
+
+function buildHeader() {
+    const grid = document.getElementById("grid");
+
+    // Empty cell (top-left)
+    grid.appendChild(createHeaderCell(""));
+
+    // Day names
+    DAYS.forEach(day => grid.appendChild(createHeaderCell(day)));
 }
 
-function setGame() {
+function createHeaderCell(text) {
+    const div = document.createElement("div");
+    div.classList.add("header");
+    div.innerText = text;
+    return div;
+}
 
-    // Make tile
-    board = [];
-    for (let r = 0; r < rows; r++) {
-        let row = [];
-        for (let c = 0; c < columns; c++) {
-            // JS
-            row.push(' ');
-            // HTML
-            let tile = document.createElement("div");
-            tile.id = r.toString() + "-" + c.toString();
-            tile.classList.add("tile");
-            tile.addEventListener("click", clickTile);
-            document.getElementById("board").append(tile);
+// -----------------------------------------------------
+// ADD ACTIVITY ROW
+// -----------------------------------------------------
+function addActivityRow() {
+    const grid = document.getElementById("grid");
+    const rowIndex = activityCount;
+    activityCount++;
+
+    // Activity name input
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = `Actividad ${rowIndex + 1}`;
+    input.classList.add("activity-input");
+    grid.appendChild(input);
+
+    // 7 tiles for the week
+    for (let c = 0; c < DAYS.length; c++) {
+        const tile = document.createElement("div");
+        tile.classList.add("tile");
+        tile.dataset.row = rowIndex;
+        tile.dataset.col = c;
+        tile.style.backgroundColor = WHITE;
+
+        tile.addEventListener("click", toggleTile);
+
+        grid.appendChild(tile);
+    }
+}
+
+// -----------------------------------------------------
+// TILE CLICK
+// -----------------------------------------------------
+function toggleTile(e) {
+    const tile = e.target;
+    const bg = getComputedStyle(tile).backgroundColor;
+
+    // Cycle: white → red → green → white
+    if (bg === RGB_WHITE)       tile.style.backgroundColor = RED;
+    else if (bg === RGB_RED)    tile.style.backgroundColor = GREEN;
+    else                        tile.style.backgroundColor = WHITE;
+
+    updateScore();
+}
+
+// -----------------------------------------------------
+// SCORE
+// -----------------------------------------------------
+function updateScore() {
+    let green = 0;
+
+    document.querySelectorAll(".tile").forEach(tile => {
+        const bg = tile.style.backgroundColor || getComputedStyle(tile).backgroundColor;
+        if (bg === GREEN || bg === RGB_GREEN) {
+            green++;
         }
-        board.push(row);
-    }
-    
-}
+    });
 
-function clickTile() {
-
-    let tile = this ; 
-    // Get the current background color
-    const currentColor = getComputedStyle(tile).backgroundColor;
-
-    // Get coords of that tile clicked
-    let coords = this.id.split("-");
-    let r = parseInt(coords[0]);
-    let c = parseInt(coords[1]);
-
-    board[r][c] = currentColor; //update JS board
-
-    // Analyze the current color and determine the next color
-    if (currentColor === color1 || currentColor === 'rgb(255, 255, 255)') {
-      // If the current color is white, change to red
-      tile.style.backgroundColor = color2;
-    } else if (currentColor === color2 || currentColor === 'rgb(231, 76, 60)') {
-      // If the current color is red, change to green
-      tile.style.backgroundColor = color1;
-    } else {
-      tile.style.backgroundColor = 'rgb(255, 255, 255)';
-    }
-
-    // Count the score base on the number of green tiles
-    let greenCount = countGreenTiles();
-    document.getElementById("puntaje").innerText = greenCount;
-  
-}
-
-// Function to count how many green tiles there are
-function countGreenTiles() {
-    let greenCount = 0;
-
-    // Loop through the board to count the green tiles
-    for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < columns; c++) {
-            let tile = document.getElementById(r + "-" + c);
-            const currentColor = getComputedStyle(tile).backgroundColor;
-
-            // Check if the tile is green
-            if (currentColor === 'rgb(46, 204, 113)' || currentColor === color1) {
-                greenCount++;
-            }
-        }
-    }
-
-    return greenCount;
+    document.getElementById("puntaje").innerText = green;
 }
