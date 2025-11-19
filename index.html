@@ -1,34 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Economía de Fichas</title>
     <link rel="stylesheet" href="token_economy.css">
-    <script src="token_economy.js"></script>
 </head>
 <body>
+
     <h1>Economía de Fichas</h1>
-    <h1>Puntaje: <span id="puntaje">0</span></h1>
-    <h2 id="time"></h2>
-    <!-- <div id="board"></div> -->
-    <div class="container">
-      <div></div>
-      <div>Lunes</div>
-      <div>Martes</div>
-      <div>Miércoles</div>
-      <div>Jueves</div>
-      <div>Viernes</div>
-      <div>Sábado</div>
-      <div>Domingo</div>
-      <div class="item1" id="board"></div>
-      <div><input type="text" id="myText" value="Actividad 1"></div>
-      <div><input type="text" id="myText" value="Actividad 2"></div>
-      <div><input type="text" id="myText" value="Actividad 3"></div>
-      <div><input type="text" id="myText" value="Actividad 4"></div>
-      <div><input type="text" id="myText" value="Actividad 5"></div>
-      <div><input type="text" id="myText" value="Actividad 6"></div>
-    </div>
+    <h2>Puntaje: <span id="puntaje">0</span></h2>
+    <button id="addActivityBtn">+ Añadir Actividad</button>
+
+    <!-- Container where JS will build the full table -->
+    <div id="grid" class="grid"></div>
+
+    <script src="token_economy.js"></script>
 </body>
 </html>
