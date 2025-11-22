@@ -15,6 +15,7 @@ window.onload = () => {
     buildHeader();
     addActivityRow(); // start with 1 row if you want
     document.getElementById("addActivityBtn").addEventListener("click", addActivityRow);
+    document.getElementById("printBtn").addEventListener("click", () => window.print());
     updateScore();
 };
 
